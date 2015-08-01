@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RoundedImageView">
+        <attr name="left_top_corner_radius" format="dimension|reference" />
+        <attr name="right_top_corner_radius" format="dimension|reference" />
+        <attr name="left_bottom_corner_radius" format="dimension|reference" />
+        <attr name="right_bottom_corner_radius" format="dimension|reference" />
+        <attr name="border_width" format="dimension|reference" />
+        <attr name="border_color" format="color|reference" />
+        <attr name="oval" format="boolean" />
+        <attr name="android:scaleType" />
+    </declare-styleable>
+
+
+    <declare-styleable name="FloatingActionButton">
+        <!-- Background for the FloatingActionButton -->
+        <attr name="android:background" />
+        <attr name="backgroundTint" />
+        <attr name="backgroundTintMode" />
+        <!-- Ripple color for the FAB. -->
+        <attr name="rippleColor"/>
+        <!-- Size for the FAB. -->
+        <attr name="fabSize"/>
+        <!-- Elevation value for the FAB -->
+        <attr name="elevation"/>
+        <!-- TranslationZ value for the FAB when pressed-->
+        <attr name="pressedTranslationZ"/>
+        <attr name="label" format="string|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="FloatingActionMenu">
+        <!-- Background for the FloatingActionButton -->
+        <attr name="android:background" />
+        <attr name="backgroundTint" />
+        <attr name="backgroundTintMode" />
+        <!-- Ripple color for the FAB. -->
+        <attr name="rippleColor"/>
+        <!-- Size for the FAB. -->
+        <attr name="fabSize"/>
+        <!-- Elevation value for the FAB -->
+        <attr name="elevation"/>
+        <!-- TranslationZ value for the FAB when pressed-->
+        <attr name="pressedTranslationZ"/>
+
+        <attr name="menuOpenAnimation" format="reference"/>
+        <attr name="menuCloseAnimation" format="reference"/>
+
+        <attr name="menuItemAnimationDelay" format="integer"/>
+        <attr name="menuItemAnimationTime" format="integer"/>
+
+        <attr name="content_padding" format="dimension|reference"/>
+        <attr name="menuBackgroundColor" format="color|reference"/>
+        <attr name="menuBackgroundFillParent" format="boolean"/>
+        <attr name="closeOnOutsideTouch" format="boolean"/>
+
+        <!-- Test -->
+        <attr name="labelType" format="enum">
+            <!-- Uses a TextView in a CardView for the label -->
+            <enum name="card_label" value="1"/>
+            <!-- Uses a TextView for the label -->
+            <enum name="text_label" value="2"/>
+        </attr>
+        <attr name="labelStyle" format="reference" />
+
+        <attr name="layout_labels" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="right" value="1"/>
+        </attr>
+        <attr name="layout_expand" format="enum">
+            <enum name="up" value="0"/>
+            <enum name="down" value="1"/>
+            <enum name="left" value="2"/>
+            <enum name="right" value="3"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="LabelView">
+        <attr name="labelType"/>
+    </declare-styleable>
+</resources>
