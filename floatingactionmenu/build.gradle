@@ -7,7 +7,7 @@ ext {
     bintrayName = 'FloatingActionMenu'
 
     publishedGroupId = 'com.wanderingcan.widget'
-    libraryName = 'MaterialWidgets'
+    libraryName = 'Floating Action Menu'
     artifact = 'floatingactionmenu'
 
     libraryDescription = 'A floating action menu that follows google\'s material design. It uses google\'s floating action button'
