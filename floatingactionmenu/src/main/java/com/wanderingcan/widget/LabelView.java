@@ -211,7 +211,7 @@ public class LabelView extends RelativeLayout {
                 public void run() {
                     setVisibility(INVISIBLE);
                 }
-            }, mHideAnimation.getDuration());
+            }, animate ? mHideAnimation.getDuration() : 0);
         }
     }
 
