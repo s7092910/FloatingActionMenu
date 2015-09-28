@@ -14,7 +14,7 @@ Yet another library for drawing Material Design promoted actions. The difference
 Add a dependency to your `build.gradle`:
 ```
 dependencies {
-    compile 'com.wanderingcan.widget:floatingactionmenu:1.0.0'
+    compile 'com.wanderingcan.widget:floatingactionmenu:1.0.1'
 }
 ```
 

@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <declare-styleable name="RoundedImageView">
-        <attr name="left_top_corner_radius" format="dimension|reference" />
-        <attr name="right_top_corner_radius" format="dimension|reference" />
-        <attr name="left_bottom_corner_radius" format="dimension|reference" />
-        <attr name="right_bottom_corner_radius" format="dimension|reference" />
-        <attr name="border_width" format="dimension|reference" />
-        <attr name="border_color" format="color|reference" />
-        <attr name="oval" format="boolean" />
-        <attr name="android:scaleType" />
-    </declare-styleable>
-
-
     <declare-styleable name="FloatingActionButton">
         <!-- Background for the FloatingActionButton -->
         <attr name="android:background" />

@@ -195,7 +195,7 @@ public class FloatingActionButton extends android.support.design.widget.Floating
                 public void run() {
                     setVisibility(INVISIBLE);
                 }
-            }, mHideAnimation.getDuration());
+            }, animate ? mHideAnimation.getDuration() : 0);
         }
     }
 

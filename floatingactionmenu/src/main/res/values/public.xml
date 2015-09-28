@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="attr" name="backgroundTint"/>
+    <public type="attr" name="backgroundTintMode"/>
+    <public type="attr" name="rippleColor"/>
+    <public type="attr" name="fabSize"/>
+    <public type="attr" name="elevation"/>
+    <public type="attr" name="pressedTranslationZ"/>
+    <public type="attr" name="label"/>
+
+    <public type="attr" name="menuOpenAnimation"/>
+    <public type="attr" name="menuCloseAnimation"/>
+    <public type="attr" name="menuItemAnimationDelay"/>
+    <public type="attr" name="menuItemAnimationTime"/>
+
+</resources>
