@@ -9,7 +9,16 @@ Yet another library for drawing Material Design promoted actions. The difference
 * Optional labels for buttons in `FloatingActionsMenu`.
 * Support for `CardView` in the optional labels.
 
-##Usage
+##Include in your project
+There is currently an issue with jcenter. So to include this library into your project you have to add the maven 
+repository to your `build.gradle`:
+```
+repositories {
+    maven {
+        url 'https://dl.bintray.com/s7092910/maven/'
+    }
+}
+```
 
 Add a dependency to your `build.gradle`:
 ```
@@ -18,6 +27,7 @@ dependencies {
 }
 ```
 
+##Usage
 ### Floating action button
 With the extension of Google's Design Library Floating Action Button, the Floating Action Button
 behaves very much like the Floating Action Button in the Design Library with a few changes. These
