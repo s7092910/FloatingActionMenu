@@ -27,7 +27,9 @@ import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.AnimRes;
+import android.support.annotation.DimenRes;
 import android.support.annotation.IntDef;
+import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.StyleRes;
 import android.support.design.widget.CoordinatorLayout;
@@ -167,7 +169,7 @@ public class FloatingActionMenu extends ViewGroup {
         mLabelsPosition = attr.getInt(R.styleable.FloatingActionMenu_layout_labels,
                 LABELS_LEFT);
         mButtonMargin = attr.getDimensionPixelSize(R.styleable.FloatingActionMenu_content_padding,
-                (int) getResources().getDimension(R.dimen.fab_content_padding));
+                (int) getResources().getDimension(R.dimen.fab_margin));
 
         mLabelsStyle = attr.getResourceId(R.styleable.FloatingActionMenu_labelStyle, 0);
         mLabelsType = attr.getInt(R.styleable.FloatingActionMenu_labelType, 0);
@@ -463,7 +465,7 @@ public class FloatingActionMenu extends ViewGroup {
                         addButtonTop - mButtonSpacing :
                         addButtonTop + mMenuButton.getMeasuredHeight() + mButtonSpacing;
 
-                for (int i = 0; i <= mButtonsCount - 1; i++) {
+                for (int i = 0; i < mButtonsCount; i++) {
                     final View child = getChildAt(i);
 
                     if (child == mMenuButton || child.getVisibility() == GONE) continue;
@@ -539,7 +541,7 @@ public class FloatingActionMenu extends ViewGroup {
                         addButtonLeft - mButtonSpacing :
                         addButtonLeft + mMenuButton.getMeasuredWidth() + mButtonSpacing;
 
-                for (int i = mButtonsCount - 1; i >= 0; i--) {
+                for (int i = 0; i < mButtonsCount; i++) {
                     final View child = getChildAt(i);
 
                     if (child == mMenuButton || child.getVisibility() == GONE) continue;
@@ -968,6 +970,30 @@ public class FloatingActionMenu extends ViewGroup {
             }
 
         }
+    }
+
+    /**
+     * Set the margin between each Floating Action Button
+     * @param margin the margin in pixels
+     */
+    public void setButtonMargin(int margin){
+        mButtonMargin = margin;
+    }
+
+    /**
+     * Set the margin between each Floating Action Button
+     * @param res dimen resource for the margin
+     */
+    public void setButtonMarginResource(@DimenRes int res){
+        mButtonMargin = getResources().getDimensionPixelSize(res);
+    }
+
+    /**
+     * Gets the margin between each Floating Action Button
+     * @return the margin in pixels
+     */
+    public int getButtonMargin(){
+        return mButtonMargin;
     }
 
     @Override
