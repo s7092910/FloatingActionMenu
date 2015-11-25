@@ -4,9 +4,9 @@ Yet another library for drawing Material Design promoted actions. The difference
 
 ##Features
 
-* `FloatingActionsMenu` which can be expanded/collapsed to reveal multiple actions.
+* `FloatingActionMenu` which can be expanded/collapsed to reveal multiple actions.
 * Support for normal `56dp` and mini `40dp` buttons in the `FloatingActionMenu`.
-* Optional labels for buttons in `FloatingActionsMenu`.
+* Optional labels for buttons in `FloatingActionMenu`.
 * Support for `CardView` in the optional labels.
 
 ##Include in your project
@@ -23,9 +23,17 @@ repositories {
 Add a dependency to your `build.gradle`:
 ```
 dependencies {
-    compile 'com.wanderingcan.widget:floatingactionmenu:1.0.2'
+    compile 'com.wanderingcan.widget:floatingactionmenu:1.1.0'
 }
 ```
+
+##Change Log
+**1.1.0**
+  * Refactored LabelView to no longer inflate the view from xml and to only contain the view(s) required instead of 
+  having all the views for both types of LabelView being in the view
+  * Fixed a bug with expanding the menu to the left or right, the `FloatingActionMenu` expand to the left or right 
+  will start from the closest button to the menu button instead of the farthest
+  * Removed the xml that was required for LabelView
 
 ##Usage
 ### Floating action button
