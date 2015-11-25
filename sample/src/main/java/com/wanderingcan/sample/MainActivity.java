@@ -31,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionMenu menu = new FloatingActionMenu(this);
         fab = new FloatingActionButton(this);
         menu.addButton(fab);
+        fab = new FloatingActionButton(this);
+        menu.addButton(fab);
+        fab = new FloatingActionButton(this);
+        menu.addButton(fab);
         menu.setMenuDirection(FloatingActionMenu.RIGHT);
         root.addView(menu);
 

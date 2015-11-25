@@ -18,14 +18,15 @@ package com.wanderingcan.widget;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -45,10 +46,6 @@ public class LabelView extends RelativeLayout {
 
     private LabelViewImpl mImpl;
     private Type mType;
-
-    private TextView mTextView;
-    private TextView mCardTextView;
-    private CardView mCardView;
 
     private Animation mShowAnimation;
     private Animation mHideAnimation;
@@ -74,21 +71,13 @@ public class LabelView extends RelativeLayout {
         TypedArray attr = context.obtainStyledAttributes(attrs,
                 R.styleable.LabelView, defStyleAttr, 0);
         int type = attr.getInt(R.styleable.LabelView_labelType, 0);
-        LayoutInflater.from(context).inflate(R.layout.label_layout, this, true);
-
-        mTextView = (TextView) findViewById(R.id.label_text);
-        mCardTextView = (TextView) findViewById(R.id.label_card_text);
-        mCardView = (CardView) findViewById(R.id.label_card);
 
         if(type == LABEL_TEXT) {
-            mCardView.setVisibility(GONE);
-            mImpl = new LabelViewText(mTextView);
-            mType = Type.TEXT;
+            setLabelTypeInternal(Type.TEXT);
         }else {
-            mTextView.setVisibility(GONE);
-            mImpl = new LabelViewCard(mCardTextView, mCardView);
-            mType = Type.CARD;
+            setLabelTypeInternal(Type.CARD);
         }
+
         attr.recycle();
     }
 
@@ -98,17 +87,8 @@ public class LabelView extends RelativeLayout {
      * @see LabelView.Type
      */
     public void setLabelType(Type type){
-        if(type == Type.TEXT) {
-            mCardView.setVisibility(GONE);
-            mTextView.setVisibility(VISIBLE);
-            mImpl = new LabelViewText(mTextView);
-            mType = Type.TEXT;
-        }else {
-            mTextView.setVisibility(GONE);
-            mCardView.setVisibility(VISIBLE);
-            mImpl = new LabelViewCard(mCardTextView, mCardView);
-            mType = Type.CARD;
-        }
+        removeAllViews();
+        setLabelTypeInternal(type);
     }
 
     /**
@@ -490,6 +470,36 @@ public class LabelView extends RelativeLayout {
      */
     public boolean getPreventCornerOverlap(){
         return mImpl.getPreventCornerOverlap();
+    }
+
+    private void setLabelTypeInternal(Type type){
+        Context context = getContext();
+        TextView textView = new TextView(context);
+
+        if(type == Type.TEXT) {
+            addView(textView);
+            mImpl = new LabelViewText(textView);
+            mType = Type.TEXT;
+        }else {
+            Resources res = context.getResources();
+            int cardPaddingY = res.getDimensionPixelSize(R.dimen.card_y_padding);
+            int cardPaddingX = res.getDimensionPixelSize(R.dimen.card_x_padding);
+            int cardElevation = res.getDimensionPixelSize(R.dimen.cardview_default_elevation);
+            int cardRadius = res.getDimensionPixelSize(R.dimen.card_radius);
+
+            CardView cardView = new CardView(context);
+            cardView.addView(textView);
+            cardView.setCardBackgroundColor(Color.WHITE);
+            cardView.setCardElevation(cardElevation);
+            cardView.setRadius(cardRadius);
+            cardView.setContentPadding(cardPaddingX, cardPaddingY, cardPaddingX, cardPaddingY);
+            cardView.setUseCompatPadding(true);
+
+            addView(cardView);
+
+            mImpl = new LabelViewCard(textView, cardView);
+            mType = Type.CARD;
+        }
     }
 
     public enum Type{

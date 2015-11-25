@@ -1,11 +1,13 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-
     <!-- Floating Action Button dimensions -->
     <dimen name="fab_actions_spacing">10dp</dimen>
     <dimen name="fab_labels_margin">8dp</dimen>
-    <dimen name="fab_content_padding">20dp</dimen>
+    <dimen name="fab_margin">20dp</dimen>
+
+    <!-- Label View -->
+    <dimen name="card_y_padding">4dp</dimen>
+    <dimen name="card_x_padding">12dp</dimen>
+    <dimen name="card_elevation">1dp</dimen>
+    <dimen name="card_radius">5dp</dimen>
 
 </resources>
