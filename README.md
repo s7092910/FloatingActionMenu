@@ -28,6 +28,10 @@ dependencies {
 ```
 
 ##Change Log
+**1.1.1**
+  * Bug fix for the newly added methods relating to Button Margins in the 'FloatingActionMenu'
+  * 'setButtonMargin' and 'setButtonMarginResource' now calls 'requestLayout' so you don't have to.
+
 **1.1.0**
   * Refactored LabelView to no longer inflate the view from xml and to only contain the view(s) required instead of 
   having all the views for both types of LabelView being in the view

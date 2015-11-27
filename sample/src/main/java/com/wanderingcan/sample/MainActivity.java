@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         fab = new FloatingActionButton(this);
         menu.addButton(fab);
         menu.setMenuDirection(FloatingActionMenu.RIGHT);
+        menu.setButtonMargin(10);
         root.addView(menu);
 
     }

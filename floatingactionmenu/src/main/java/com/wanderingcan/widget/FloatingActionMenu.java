@@ -977,7 +977,8 @@ public class FloatingActionMenu extends ViewGroup {
      * @param margin the margin in pixels
      */
     public void setButtonMargin(int margin){
-        mButtonMargin = margin;
+        mButtonSpacing = margin;
+        requestLayout();
     }
 
     /**
@@ -985,7 +986,8 @@ public class FloatingActionMenu extends ViewGroup {
      * @param res dimen resource for the margin
      */
     public void setButtonMarginResource(@DimenRes int res){
-        mButtonMargin = getResources().getDimensionPixelSize(res);
+        mButtonSpacing = getResources().getDimensionPixelSize(res);
+        requestLayout();
     }
 
     /**
@@ -993,7 +995,7 @@ public class FloatingActionMenu extends ViewGroup {
      * @return the margin in pixels
      */
     public int getButtonMargin(){
-        return mButtonMargin;
+        return mButtonSpacing;
     }
 
     @Override
