@@ -1,4 +1,4 @@
-package com.wanderingcan.widget;
+package com.wanderingcan.floatingactionmenusample;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
