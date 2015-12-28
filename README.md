@@ -23,11 +23,14 @@ repositories {
 Add a dependency to your `build.gradle`:
 ```
 dependencies {
-    compile 'com.wanderingcan.widget:floatingactionmenu:1.1.0'
+    compile 'com.wanderingcan.widget:floatingactionmenu:1.2.0'
 }
 ```
 
 ##Change Log
+**1.2.0**
+  * Changed the name of the packages so that this library is compatible with [Persistent Search](https://github.com/s7092910/PersistentSearch)
+
 **1.1.1**
   * Bug fix for the newly added methods relating to Button Margins in the 'FloatingActionMenu'
   * 'setButtonMargin' and 'setButtonMarginResource' now calls 'requestLayout' so you don't have to.
