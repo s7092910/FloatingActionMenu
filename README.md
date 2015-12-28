@@ -47,7 +47,7 @@ changes allow custom animations, getting the label and setting/getting the text 
 
 Here is an example of **Floating Action Button**'s xml attributes:
 ```XML
-<com.wanderingcan.widget.FloatingActionButton
+<com.wanderingcan.widget.floatingactionmenu.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fab"
@@ -85,7 +85,7 @@ main Floating Action Button.
 
 Here is an example of **Floating Action Button**'s xml attributes:
 ```XML
- <com.wanderingcan.widget.FloatingActionMenu
+ <com.wanderingcan.widget.floatingactionmenu.FloatingActionMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/fam"
@@ -94,7 +94,7 @@ Here is an example of **Floating Action Button**'s xml attributes:
         app:fabSize="normal"
         app:elevation="6dp"
         app:layout_expand="up">
-        <com.wanderingcan.widget.FloatingActionButton
+        <com.wanderingcan.widget.floatingactionmenu.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fab"
@@ -102,7 +102,7 @@ Here is an example of **Floating Action Button**'s xml attributes:
             app:fabSize="mini"
             app:elevation="6dp"
             app:label="Fab" />
-        <com.wanderingcan.widget.FloatingActionButton
+        <com.wanderingcan.widget.floatingactionmenu.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fab_2"
@@ -110,7 +110,7 @@ Here is an example of **Floating Action Button**'s xml attributes:
             app:fabSize="mini"
             app:elevation="6dp"
             app:label="Fab 2" />
-    </com.wanderingcan.widget.FloatingActionMenu>
+    </com.wanderingcan.widget.floatingactionmenu.FloatingActionMenu>
 ```
 The Floating Action Menu will automatically create the labels and display them when the menu is open
 if the following xml attribute are set:

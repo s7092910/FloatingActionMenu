@@ -14,101 +14,105 @@
  * limitations under the License.
  */
 
-package com.wanderingcan.widget.internal;
+package com.wanderingcan.floatingactionmenu.internal;
 
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.v7.widget.CardView;
 import android.widget.TextView;
 
 /**
- * The TextView Implementation of the LabelView
+ * The TextView within a CardView Implementation of the LabelView
  */
-public class LabelViewText extends LabelViewImpl {
+public class LabelViewCard extends LabelViewImpl {
 
-    public LabelViewText(TextView textView){
+    private CardView mCardView;
+
+    public LabelViewCard(TextView textView, CardView cardView){
         mTextView = textView;
+        mCardView = cardView;
     }
 
     @Override
     public void setBackgroundColor(int color) {
-        mTextView.setBackgroundColor(color);
+        mCardView.setCardBackgroundColor(color);
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void setBackground(Drawable background) {
         if (Build.VERSION.SDK_INT >= 16){
-            mTextView.setBackground(background);
+            mCardView.setBackground(background);
         }else {
-            mTextView.setBackgroundDrawable(background);
+            mCardView.setBackgroundDrawable(background);
         }
     }
 
     @Override
     public void setBackgroundResource(int resId) {
-        mTextView.setBackgroundResource(resId);
+        mCardView.setBackgroundResource(resId);
     }
 
     @Override
     public void setRadius(float radius) {
-        //Not Implemented
+        mCardView.setRadius(radius);
     }
 
     @Override
     public float getRadius() {
-        //Not Implemented
-        return 0;
+        return mCardView.getRadius();
     }
 
     @Override
     public void setElevation(float elevation) {
-        if (Build.VERSION.SDK_INT >= 21){
-            mTextView.setElevation(elevation);
+        if (Build.VERSION.SDK_INT >= 21) {
+            mCardView.setElevation(elevation);
+        }else {
+            mCardView.setCardElevation(elevation);
         }
     }
 
     @Override
     public float getElevation() {
-        if (Build.VERSION.SDK_INT >= 21){
-            return mTextView.getElevation();
+        if (Build.VERSION.SDK_INT >= 21) {
+           return mCardView.getElevation();
+        }else {
+           return mCardView.getCardElevation();
         }
-        return 0;
     }
 
     @Override
     public void setMaxElevation(float maxElevation) {
-        //Not Implemented
+        mCardView.setMaxCardElevation(maxElevation);
     }
 
     @Override
     public float getMaxElevation() {
-        //Not Implemented
-        return 0;
+        return mCardView.getMaxCardElevation();
     }
 
     @Override
     public void setContentPadding(int left, int top, int right, int bottom) {
-        //Not Implemented
+        mCardView.setContentPadding(left, top, right, bottom);
     }
 
     @Override
     public void setUseCompatPadding(boolean useCompatPadding) {
-        //Not Implemented
+        mCardView.setUseCompatPadding(useCompatPadding);
     }
 
     @Override
     public boolean getUseCompatPadding() {
-        //Not Implemented
-        return false;
+        return mCardView.getUseCompatPadding();
     }
 
     @Override
     public void setPreventCornerOverlap(boolean preventCornerOverlap) {
-        //Not Implemented
+        mCardView.setPreventCornerOverlap(preventCornerOverlap);
     }
 
     @Override
     public boolean getPreventCornerOverlap() {
-        //Not Implemented
-        return false;
+        return mCardView.getPreventCornerOverlap();
     }
 }

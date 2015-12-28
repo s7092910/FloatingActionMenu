@@ -6,7 +6,7 @@
     android:id="@+id/root"
     tools:context=".MainActivity">
 
-    <com.wanderingcan.widget.FloatingActionMenu
+    <com.wanderingcan.floatingactionmenu.FloatingActionMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/fam_2"
@@ -18,7 +18,7 @@
         app:layout_behavior=""
         app:layout_anchorGravity="top|right|end">
 
-        <com.wanderingcan.widget.FloatingActionButton
+        <com.wanderingcan.floatingactionmenu.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fam_2_fab_1"
@@ -27,7 +27,7 @@
             app:elevation="6dp"
             app:label="text" />
 
-        <com.wanderingcan.widget.FloatingActionButton
+        <com.wanderingcan.floatingactionmenu.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fam_2_fab_2"
@@ -36,10 +36,10 @@
             app:elevation="6dp"
             app:label="text2" />
 
-    </com.wanderingcan.widget.FloatingActionMenu>
+    </com.wanderingcan.floatingactionmenu.FloatingActionMenu>
 
 
-    <com.wanderingcan.widget.FloatingActionMenu
+    <com.wanderingcan.floatingactionmenu.FloatingActionMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/fam_1"
@@ -54,7 +54,7 @@
         app:backgroundTint="@android:color/holo_blue_dark"
         app:layout_anchorGravity="bottom|left|end">
 
-        <com.wanderingcan.widget.FloatingActionButton
+        <com.wanderingcan.floatingactionmenu.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fam_fab_1"
@@ -64,7 +64,7 @@
             app:label="Menu 1"
             app:backgroundTint="@android:color/holo_blue_light"/>
 
-        <com.wanderingcan.widget.FloatingActionButton
+        <com.wanderingcan.floatingactionmenu.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fam_fab_2"
@@ -73,9 +73,9 @@
             app:elevation="6dp"
             app:label="Show Snackbar"
             app:backgroundTint="@android:color/holo_blue_bright"/>
-    </com.wanderingcan.widget.FloatingActionMenu>
+    </com.wanderingcan.floatingactionmenu.FloatingActionMenu>
 
-    <com.wanderingcan.widget.FloatingActionMenu
+    <com.wanderingcan.floatingactionmenu.FloatingActionMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/fam_3"
@@ -88,7 +88,7 @@
         app:labelType="text_label"
         app:layout_anchorGravity="bottom|right|end">
 
-        <com.wanderingcan.widget.FloatingActionButton
+        <com.wanderingcan.floatingactionmenu.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fam_3_fab_1"
@@ -97,7 +97,7 @@
             app:elevation="6dp"
             app:label="Menu 3" />
 
-        <com.wanderingcan.widget.FloatingActionButton
+        <com.wanderingcan.floatingactionmenu.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fam_3_fab_2"
@@ -106,7 +106,7 @@
             app:elevation="6dp"
             app:borderWidth="0dp" />
 
-        <com.wanderingcan.widget.FloatingActionButton
+        <com.wanderingcan.floatingactionmenu.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fam_3_fab_3"
@@ -115,6 +115,6 @@
             app:elevation="6dp"
             app:label="3rd button"/>
 
-    </com.wanderingcan.widget.FloatingActionMenu>
+    </com.wanderingcan.floatingactionmenu.FloatingActionMenu>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -15,7 +15,7 @@ ext {
     siteUrl = 'https://github.com/s7092910/FloatingActionMenu'
     gitUrl = 'https://github.com/s7092910/FloatingActionMenu.git'
 
-    libraryVersion = '1.1.1'
+    libraryVersion = '1.2.0'
 
     developerId = 's7092910'
     developerName = 'Christopher Beda'
@@ -33,7 +33,7 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 5
+        versionCode 7
         versionName libraryVersion
     }
     buildTypes {
@@ -49,7 +49,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:cardview-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
-    compile files('libs/doclava-1.0.6.jar')
 }
 
 

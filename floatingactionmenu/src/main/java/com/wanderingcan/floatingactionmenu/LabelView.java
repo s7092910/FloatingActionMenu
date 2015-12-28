@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wanderingcan.widget;
+package com.wanderingcan.floatingactionmenu;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -31,9 +31,10 @@ import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.wanderingcan.widget.internal.LabelViewCard;
-import com.wanderingcan.widget.internal.LabelViewImpl;
-import com.wanderingcan.widget.internal.LabelViewText;
+import com.wanderingcan.floatingactionmenu.internal.LabelViewCard;
+import com.wanderingcan.floatingactionmenu.internal.LabelViewImpl;
+import com.wanderingcan.floatingactionmenu.internal.LabelViewText;
+import com.wanderingcan.floatingactionmenu.R;
 
 /**
  * A View that allows either a CardView or a TextView to act like a label. Can be used separate from

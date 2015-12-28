@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wanderingcan.widget.internal;
+package com.wanderingcan.floatingactionmenu.internal;
 
 import android.graphics.Rect;
 import android.support.annotation.NonNull;

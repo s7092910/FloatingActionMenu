@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wanderingcan.widget.internal;
+package com.wanderingcan.floatingactionmenu.internal;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -63,6 +63,7 @@ public abstract class LabelViewImpl {
         mTextView.setTextSize(unit, size);
     }
 
+    @SuppressWarnings("deprecation")
     public void setTextAppearance (Context context, int resId){
         mTextView.setTextAppearance(context, resId);
     }

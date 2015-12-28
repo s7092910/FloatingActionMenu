@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wanderingcan.widget;
+package com.wanderingcan.floatingactionmenu;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -23,6 +23,8 @@ import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+
+import com.wanderingcan.floatingactionmenu.R;
 
 
 /**

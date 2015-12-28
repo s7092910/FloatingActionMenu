@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.wanderingcan.widget;
+package com.wanderingcan.floatingactionmenu;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -29,11 +29,11 @@ import android.os.Parcelable;
 import android.support.annotation.AnimRes;
 import android.support.annotation.DimenRes;
 import android.support.annotation.IntDef;
-import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.StyleRes;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
@@ -48,7 +48,8 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.view.animation.OvershootInterpolator;
 
-import com.wanderingcan.widget.internal.TouchDelegateGroup;
+import com.wanderingcan.floatingactionmenu.internal.TouchDelegateGroup;
+import com.wanderingcan.floatingactionmenu.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -89,8 +90,8 @@ public class FloatingActionMenu extends ViewGroup {
 
     private int mExpandDirection;
 
-    private int mButtonSpacing;
     private int mButtonMargin;
+    private int mContentPadding;
     private int mLabelsMargin;
 
     private boolean isMenuOpened;
@@ -162,13 +163,13 @@ public class FloatingActionMenu extends ViewGroup {
 
         TypedArray attr = context.obtainStyledAttributes(attrs,
                 R.styleable.FloatingActionMenu, defStyleAttr, 0);
-        mButtonSpacing = getResources().getDimensionPixelSize(R.dimen.fab_actions_spacing);
+        mButtonMargin = getResources().getDimensionPixelSize(R.dimen.fab_actions_spacing);
 
         mExpandDirection = attr.getInt(R.styleable.FloatingActionMenu_layout_expand,
                 UP);
         mLabelsPosition = attr.getInt(R.styleable.FloatingActionMenu_layout_labels,
                 LABELS_LEFT);
-        mButtonMargin = attr.getDimensionPixelSize(R.styleable.FloatingActionMenu_content_padding,
+        mContentPadding = attr.getDimensionPixelSize(R.styleable.FloatingActionMenu_content_padding,
                 (int) getResources().getDimension(R.dimen.fab_margin));
 
         mLabelsStyle = attr.getResourceId(R.styleable.FloatingActionMenu_labelStyle, 0);
@@ -232,7 +233,7 @@ public class FloatingActionMenu extends ViewGroup {
         mMenuButton = new FloatingActionButton(context, attributeSet);
 
         mMenuButton.setId(R.id.fab_expand_menu_button);
-        mMenuButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_white_24dp));
+        mMenuButton.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_add_white_24dp));
         mMenuButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -401,15 +402,15 @@ public class FloatingActionMenu extends ViewGroup {
         switch (mExpandDirection) {
             case UP:
             case DOWN:
-                height += mButtonSpacing * (mButtonsCount - 1);
+                height += mButtonMargin * (mButtonsCount - 1);
                 height = adjustForOvershoot(height);
-                width += mButtonMargin;
+                width += mContentPadding;
                 break;
             case LEFT:
             case RIGHT:
-                width += mButtonSpacing * (mButtonsCount - 1);
+                width += mButtonMargin * (mButtonsCount - 1);
                 width = adjustForOvershoot(width);
-                height += mButtonMargin;
+                height += mContentPadding;
                 break;
         }
 
@@ -447,14 +448,14 @@ public class FloatingActionMenu extends ViewGroup {
                         : mMaxButtonWidth / 2 + getPaddingLeft();
                 int addButtonLeft = buttonsHorizontalCenter - mMenuButton.getMeasuredWidth() / 2;
 
-                int buttonMarginHeight = expandUp ? (mButtonMargin/2): (-mButtonMargin/2);
-                int buttonMarginWidth = mLabelsPosition == LABELS_LEFT
-                        ? (mButtonMargin/2)
-                        :(-mButtonMargin/2);
+                int buttonPaddingHeight = expandUp ? (mContentPadding /2): (-mContentPadding /2);
+                int buttonPaddingWidth = mLabelsPosition == LABELS_LEFT
+                        ? (mContentPadding /2)
+                        :(-mContentPadding /2);
 
-                mMenuButton.layout(addButtonLeft - buttonMarginWidth, addButtonTop - buttonMarginHeight,
-                        addButtonLeft + mMenuButton.getMeasuredWidth() - buttonMarginWidth,
-                        addButtonTop + mMenuButton.getMeasuredHeight() - buttonMarginHeight);
+                mMenuButton.layout(addButtonLeft - buttonPaddingWidth, addButtonTop - buttonPaddingHeight,
+                        addButtonLeft + mMenuButton.getMeasuredWidth() - buttonPaddingWidth,
+                        addButtonTop + mMenuButton.getMeasuredHeight() - buttonPaddingHeight);
 
                 int labelsOffset = mMaxButtonWidth / 2 + mLabelsMargin;
                 int labelsXNearButton = mLabelsPosition == LABELS_LEFT
@@ -462,8 +463,8 @@ public class FloatingActionMenu extends ViewGroup {
                         : buttonsHorizontalCenter + labelsOffset;
 
                 int nextY = expandUp ?
-                        addButtonTop - mButtonSpacing :
-                        addButtonTop + mMenuButton.getMeasuredHeight() + mButtonSpacing;
+                        addButtonTop - mButtonMargin :
+                        addButtonTop + mMenuButton.getMeasuredHeight() + mButtonMargin;
 
                 for (int i = 0; i < mButtonsCount; i++) {
                     final View child = getChildAt(i);
@@ -472,9 +473,9 @@ public class FloatingActionMenu extends ViewGroup {
 
                     int childX = buttonsHorizontalCenter - child.getMeasuredWidth() / 2;
                     int childY = expandUp ? nextY - child.getMeasuredHeight() : nextY;
-                    child.layout(childX - buttonMarginWidth, childY - buttonMarginHeight,
-                            childX + child.getMeasuredWidth() - buttonMarginWidth,
-                            childY + child.getMeasuredHeight() - buttonMarginHeight);
+                    child.layout(childX - buttonPaddingWidth, childY - buttonPaddingHeight,
+                            childX + child.getMeasuredWidth() - buttonPaddingWidth,
+                            childY + child.getMeasuredHeight() - buttonPaddingHeight);
 
                     if(!isMenuOpened) {
                         ((FloatingActionButton) child).hide(false);
@@ -497,15 +498,15 @@ public class FloatingActionMenu extends ViewGroup {
                         int labelTop = childY +
                                 (child.getMeasuredHeight() - label.getMeasuredHeight()) / 2;
 
-                        label.layout(labelLeft, labelTop - buttonMarginHeight,
+                        label.layout(labelLeft, labelTop - buttonPaddingHeight,
                                 labelRight,
-                                labelTop + label.getMeasuredHeight() - buttonMarginHeight);
+                                labelTop + label.getMeasuredHeight() - buttonPaddingHeight);
 
                         Rect touchArea = new Rect(
                                 Math.min(childX, labelLeft),
-                                childY - mButtonSpacing / 2,
+                                childY - mButtonMargin / 2,
                                 Math.max(childX + child.getMeasuredWidth(), labelRight),
-                                childY + child.getMeasuredHeight() + mButtonSpacing / 2);
+                                childY + child.getMeasuredHeight() + mButtonMargin / 2);
                         mTouchDelegateGroup.addTouchDelegate(new TouchDelegate(touchArea, child));
 
                         if(!isMenuOpened) {
@@ -514,8 +515,8 @@ public class FloatingActionMenu extends ViewGroup {
                     }
 
                     nextY = expandUp ?
-                            childY - mButtonSpacing :
-                            childY + child.getMeasuredHeight() + mButtonSpacing;
+                            childY - mButtonMargin :
+                            childY + child.getMeasuredHeight() + mButtonMargin;
                 }
                 break;
 
@@ -530,16 +531,16 @@ public class FloatingActionMenu extends ViewGroup {
                 addButtonTop = b - t - mMaxButtonHeight +
                         (mMaxButtonHeight - mMenuButton.getMeasuredHeight()) / 2;
 
-                buttonMarginHeight = (mButtonMargin/2);
-                buttonMarginWidth = expandLeft ? (mButtonMargin/2): (-mButtonMargin/2);
+                buttonPaddingHeight = (mContentPadding /2);
+                buttonPaddingWidth = expandLeft ? (mContentPadding /2): (-mContentPadding /2);
 
-                mMenuButton.layout(addButtonLeft - buttonMarginWidth, addButtonTop - buttonMarginHeight,
-                        addButtonLeft + mMenuButton.getMeasuredWidth() - buttonMarginWidth,
-                        addButtonTop + mMenuButton.getMeasuredHeight() - buttonMarginHeight);
+                mMenuButton.layout(addButtonLeft - buttonPaddingWidth, addButtonTop - buttonPaddingHeight,
+                        addButtonLeft + mMenuButton.getMeasuredWidth() - buttonPaddingWidth,
+                        addButtonTop + mMenuButton.getMeasuredHeight() - buttonPaddingHeight);
 
                 int nextX = expandLeft ?
-                        addButtonLeft - mButtonSpacing :
-                        addButtonLeft + mMenuButton.getMeasuredWidth() + mButtonSpacing;
+                        addButtonLeft - mButtonMargin :
+                        addButtonLeft + mMenuButton.getMeasuredWidth() + mButtonMargin;
 
                 for (int i = 0; i < mButtonsCount; i++) {
                     final View child = getChildAt(i);
@@ -548,17 +549,17 @@ public class FloatingActionMenu extends ViewGroup {
 
                     int childX = expandLeft ? nextX - child.getMeasuredWidth() : nextX;
                     int childY = addButtonTop + (mMenuButton.getMeasuredHeight() - child.getMeasuredHeight()) / 2;
-                    child.layout(childX - buttonMarginWidth, childY - buttonMarginHeight,
-                            childX + child.getMeasuredWidth() - buttonMarginWidth,
-                            childY + child.getMeasuredHeight() - buttonMarginHeight);
+                    child.layout(childX - buttonPaddingWidth, childY - buttonPaddingHeight,
+                            childX + child.getMeasuredWidth() - buttonPaddingWidth,
+                            childY + child.getMeasuredHeight() - buttonPaddingHeight);
 
                     if(!isMenuOpened) {
                         ((FloatingActionButton) child).hide(false);
                     }
 
                     nextX = expandLeft ?
-                            childX - mButtonSpacing :
-                            childX + child.getMeasuredWidth() + mButtonSpacing;
+                            childX - mButtonMargin :
+                            childX + child.getMeasuredWidth() + mButtonMargin;
                 }
 
                 break;
@@ -977,7 +978,7 @@ public class FloatingActionMenu extends ViewGroup {
      * @param margin the margin in pixels
      */
     public void setButtonMargin(int margin){
-        mButtonSpacing = margin;
+        mButtonMargin = margin;
         requestLayout();
     }
 
@@ -986,7 +987,7 @@ public class FloatingActionMenu extends ViewGroup {
      * @param res dimen resource for the margin
      */
     public void setButtonMarginResource(@DimenRes int res){
-        mButtonSpacing = getResources().getDimensionPixelSize(res);
+        mButtonMargin = getResources().getDimensionPixelSize(res);
         requestLayout();
     }
 
@@ -995,7 +996,7 @@ public class FloatingActionMenu extends ViewGroup {
      * @return the margin in pixels
      */
     public int getButtonMargin(){
-        return mButtonSpacing;
+        return mButtonMargin;
     }
 
     @Override
